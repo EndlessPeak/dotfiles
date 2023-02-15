@@ -116,6 +116,16 @@ source ~/.zim/modules/fzf-tab/fzf-tab.plugin.zsh
 
 source ~/.config/zsh/prompt.zsh
 
+#user=$(whoami)
+DATE=$(date)
+cowsay -f small "Welcome,$USER" | lolcat -a --speed=1000
+echo "$DATE" | lolcat -a --speed=1000
 # if [[ "$(tty)" = "/dev/tty1" ]]; then
-#	exec wayfire
+# 	exec wayfire
 # fi
+
+# ROS configuration
+# source /usr/share/gazebo/setup.sh
+# source /opt/ros/noetic/setup.zsh
+# ROS workspace
+# source ~/Develop/ROSRace/devel/setup.zsh
