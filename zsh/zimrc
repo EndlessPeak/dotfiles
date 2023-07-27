@@ -55,7 +55,8 @@ zmodule completion
 zmodule git-info
 zmodule duration-info
 zmodule prompt-pwd
-zmodule magicmace
+zmodule romkatv/powerlevel10k --use degit
+#zmodule magicmace
 zmodule zsh-users/zsh-completions
 zmodule zsh-users/zsh-autosuggestions
 zmodule zsh-users/zsh-history-substring-search
@@ -63,5 +64,5 @@ zmodule zdharma-continuum/fast-syntax-highlighting
 zmodule supercrabtree/k
 zmodule hlissner/zsh-autopair
 zmodule pabloariasal/zfm
-zmodule agkozak/zsh-z
+#zmodule agkozak/zsh-z
 zmodule Aloxaf/fzf-tab

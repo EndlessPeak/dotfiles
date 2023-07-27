@@ -1,3 +1,11 @@
+# Disable p10k
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # Start configuration added by Zim install {{{
 #
 # User configuration sourced by interactive shells
@@ -100,32 +108,30 @@ for key ('j') bindkey -M vicmd ${key} history-substring-search-down
 unset key
 # }}} End configuration added by Zim install
 
+# Self configuration load part
 source ~/.config/zsh/env.zsh
 source ~/.config/zsh/aliases.zsh
 source ~/.config/zsh/plugins.zsh
 # source ~/.config/zsh/vi.zsh
 source ~/.config/zsh/fzf.zsh
-source ~/.config/zsh/mappings.zsh
-
-# if [ -f ~/.sconfig/zsh/zshrc ]; then
-# 	source ~/.sconfig/zsh/zshrc
-# fi
+# source ~/.config/zsh/mappings.zsh
+source ~/.config/zsh/joshuto.zsh
 
 autopair-init
 source ~/.zim/modules/fzf-tab/fzf-tab.plugin.zsh
 
-source ~/.config/zsh/prompt.zsh
-
-#user=$(whoami)
+# Welcome Messages
 DATE=$(date)
 cowsay -f small "Welcome,$USER" | lolcat -a --speed=1000
 echo "$DATE" | lolcat -a --speed=1000
-# if [[ "$(tty)" = "/dev/tty1" ]]; then
-# 	exec wayfire
-# fi
 
-# ROS configuration
-# source /usr/share/gazebo/setup.sh
-# source /opt/ros/noetic/setup.zsh
-# ROS workspace
-# source ~/Develop/ROSRace/devel/setup.zsh
+# Hook direnv
+eval "$(direnv hook zsh)"
+eval "$(zoxide init zsh)"
+# source ~/.config/zsh/prompt.zsh
+
+# enable p10k
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+(( ! ${+functions[p10k]} )) || p10k finalize
